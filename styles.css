@@ -716,7 +716,7 @@ ul {
 .advisor-img {
   width: 140px;
   height: 140px;
-  background: linear-gradient(135deg, #F59E0B, #FDE68A) border-box;
+  background: linear-gradient(135deg, #F59E0B, #FDE68A);
 }
 
 .advisor-card .member-role {
@@ -736,14 +736,8 @@ ul {
   height: 120px;
   margin: 0 auto 1.5rem;
   border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid transparent;
-  background: linear-gradient(135deg, var(--color-blue-light), var(--color-green-light)) border-box;
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  margin-top: 5px; /* ensure mask fallback */
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
+  padding: 4px; /* Space for the gradient border */
+  background: linear-gradient(135deg, var(--color-blue-light), var(--color-green-light));
   position: relative;
 }
 
@@ -752,8 +746,8 @@ ul {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  position: absolute; /* Place it nicely */
-  top: 0; left: 0;
+  background-color: var(--card-bg); /* Fallback inside */
+  display: block;
 }
 
 .member-name {
