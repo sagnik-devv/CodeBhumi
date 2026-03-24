@@ -1,6 +1,33 @@
 // CodeBhumi Main Script
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Theme Toggle Logic
+  const themeToggleParam = document.getElementById("theme-toggle");
+  const htmlEl = document.documentElement;
+  if(themeToggleParam) {
+    const icon = themeToggleParam.querySelector("i");
+    
+    // Check local storage for theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      htmlEl.setAttribute("data-theme", savedTheme);
+      icon.className = savedTheme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    } else {
+      htmlEl.setAttribute("data-theme", "dark");
+      icon.className = "fa-solid fa-sun";
+    }
+
+    themeToggleParam.addEventListener("click", () => {
+      const currentTheme = htmlEl.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      
+      htmlEl.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+      
+      icon.className = newTheme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    });
+  }
+
   // 1. Sticky Navbar
   const navbar = document.getElementById("navbar");
   window.addEventListener("scroll", () => {
@@ -28,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navLinks.style.top = "70px";
       navLinks.style.left = "0";
       navLinks.style.width = "100%";
-      navLinks.style.backgroundColor = "rgba(15, 23, 42, 0.95)";
+      navLinks.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--nav-bg').trim() || "rgba(15, 23, 42, 0.95)";
       navLinks.style.padding = "2rem 0";
       navBtn.style.display = "inline-block";
       navBtn.style.margin = "1rem auto";
@@ -134,7 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(16, 185, 129, 0.5)'; // Greenish tint
+        ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' 
+          ? 'rgba(16, 185, 129, 0.5)' 
+          : 'rgba(16, 185, 129, 0.2)'; // Greenish tint
         ctx.fill();
       }
     }
@@ -160,7 +189,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (dist < 150) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.2 - dist/750})`; // Blueish connections
+            const alpha = 0.2 - dist/750;
+            ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' 
+              ? `rgba(59, 130, 246, ${alpha})`
+              : `rgba(16, 185, 129, ${alpha * 0.5})`; // Blueish/Greenish connections
             ctx.lineWidth = 1;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -173,5 +205,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     animate();
+  }
+
+  // 6. Typewriter Effect
+  const phrases = ["Igniting Technology & Innovation", "Building the Future of Tech", "Empowering Student Developers"];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typewriterElement = document.getElementById("typewriter");
+  
+  function typeWriter() {
+    if(!typewriterElement) return;
+    
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+      charIndex--;
+    } else {
+      charIndex++;
+    }
+    
+    typewriterElement.textContent = currentPhrase.substring(0, charIndex);
+    
+    let typeSpeed = isDeleting ? 50 : 100;
+    
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typeSpeed = 2000; // Pause at end
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typeSpeed = 500; // Pause before typing next
+    }
+    
+    setTimeout(typeWriter, typeSpeed);
+  }
+  
+  if(typewriterElement) {
+    setTimeout(typeWriter, 1000);
+  }
+
+  // 7. Parallax effect on Hero Content
+  const heroContent = document.getElementById("hero-content");
+  if(heroContent) {
+    document.addEventListener("mousemove", (e) => {
+      const x = (window.innerWidth / 2 - e.pageX) / 50;
+      const y = (window.innerHeight / 2 - e.pageY) / 50;
+      heroContent.style.transform = `translate(${x}px, ${y}px)`;
+    });
   }
 });

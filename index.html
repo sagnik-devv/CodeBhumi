@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,12 @@
         <li><a href="#team">Team</a></li>
         <li><a href="#events">Events</a></li>
       </ul>
-      <a href="#apply" class="btn btn-primary nav-btn">Apply Now</a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <a href="https://forms.gle/ow61ez4bXMKDqfRy9" target="_blank" class="btn btn-primary nav-btn">Apply Now</a>
+      </div>
       
       <!-- Mobile menu toggle -->
       <button class="mobile-toggle" aria-label="Toggle menu">
@@ -44,13 +49,12 @@
     <div class="hero-bg">
       <canvas id="tech-grid"></canvas>
     </div>
-    <div class="hero-content">
-      <img src="Org Logo.jpg" alt="CodeBhumi" class="hero-logo floating">
-      <h1 class="hero-title">Code<span class="text-gradient">Bhumi</span></h1>
-      <p class="hero-tagline">Igniting Technology & Innovation</p>
+    <div class="hero-content" id="hero-content">
+      <h1 class="hero-title interactive-title">Code<span class="text-gradient">Bhumi</span></h1>
+      <p class="hero-tagline"><span id="typewriter"></span><span class="cursor">|</span></p>
       <div class="hero-actions">
-        <a href="#apply" class="btn btn-primary btn-large glow-effect">Apply Now</a>
-        <a href="#about" class="btn btn-secondary btn-large">Learn More</a>
+        <a href="https://forms.gle/ow61ez4bXMKDqfRy9" target="_blank" class="btn btn-primary btn-large glow-effect hover-lift">Apply Now</a>
+        <a href="#about" class="btn btn-secondary btn-large hover-lift">Learn More</a>
       </div>
     </div>
   </section>
@@ -223,7 +227,7 @@
           <span class="trait-badge"><i class="fa-solid fa-handshake"></i> Team collaboration</span>
         </div>
         
-        <a href="#" class="btn btn-primary btn-large recruit-btn">Apply Now</a>
+        <a href="https://forms.gle/ow61ez4bXMKDqfRy9" target="_blank" class="btn btn-primary btn-large recruit-btn">Apply Now</a>
       </div>
     </div>
   </section>

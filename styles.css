@@ -1,18 +1,50 @@
 /* CodeBhumi Premium Corporate Styles */
 
 :root {
-  /* Colors */
-  --color-blue: #1E3A8A; /* Dark blue corporate */
-  --color-green: #10B981; /* Brand green */
+  /* Base Colors */
+  --color-blue: #1E3A8A;
+  --color-green: #10B981;
   --color-blue-light: #3B82F6;
   --color-green-light: #34D399;
-  --color-bg: #F8FAFC;
-  --color-bg-dark: #0F172A;
-  --color-text-main: #FFFFFF;
-  --color-text-muted: #94A3B8;
+
+  /* Light Theme (Warm White + Green) */
+  --bg-primary: #FDFDFB; /* Warm white */
+  --bg-secondary: #F6F6F4;
+  --text-primary: #1C1917; /* Warm dark gray */
+  --text-muted: #57534E;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(16, 185, 129, 0.2);
+  --btn-secondary-bg: rgba(16, 185, 129, 0.05);
+  --btn-secondary-border: rgba(16, 185, 129, 0.3);
+  --btn-secondary-color: #10B981;
+  --btn-secondary-hover: rgba(16, 185, 129, 0.15);
+  --nav-bg: rgba(253, 253, 251, 0.85);
+  --nav-link: #57534E;
+  --nav-link-hover: #1C1917;
+  --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 246, 244, 0.5));
+  --hero-gradient: linear-gradient(to top, var(--bg-primary), transparent);
 
   /* Typography */
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme (Dark Glassmorphism) */
+  --bg-primary: #0F172A;
+  --bg-secondary: #0B1121;
+  --text-primary: #FFFFFF;
+  --text-muted: #94A3B8;
+  --card-bg: rgba(15, 23, 42, 0.6);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --btn-secondary-bg: transparent;
+  --btn-secondary-border: rgba(255, 255, 255, 0.2);
+  --btn-secondary-color: #FFFFFF;
+  --btn-secondary-hover: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(15, 23, 42, 0.85);
+  --nav-link: #94A3B8;
+  --nav-link-hover: #FFFFFF;
+  --gradient-card: linear-gradient(145deg, rgba(30, 58, 138, 0.1), rgba(15, 23, 42, 0.5));
+  --hero-gradient: linear-gradient(to top, var(--bg-primary), transparent);
 }
 
 * {
@@ -23,10 +55,11 @@
 
 body {
   font-family: var(--font-main);
-  background: var(--color-bg-dark);
-  color: var(--color-text-main);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Base Typography */
@@ -94,14 +127,14 @@ ul {
 }
 
 .btn-secondary {
-  background: transparent;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-color);
+  border: 1px solid var(--btn-secondary-border);
   backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--btn-secondary-hover);
   transform: translateY(-2px);
 }
 
@@ -123,10 +156,10 @@ ul {
 }
 
 .navbar.scrolled {
-  background: rgba(15, 23, 42, 0.85);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--card-border);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   padding: 0.75rem 0;
 }
@@ -160,12 +193,13 @@ ul {
 .nav-links a {
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: var(--nav-link);
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--color-text-main);
+  color: var(--nav-link-hover);
 }
 
 .nav-links a::after {
@@ -197,10 +231,43 @@ ul {
   display: block;
   width: 25px;
   height: 2px;
-  background-color: white;
+  background-color: var(--text-primary);
   margin: 5px 0;
   transition: 0.3s;
   border-radius: 2px;
+}
+
+/* Theme Toggle styles */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-toggle-btn {
+  background: var(--btn-secondary-bg);
+  border: 1px solid var(--btn-secondary-border);
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--btn-secondary-hover);
+}
+
+@media (max-width: 900px) {
+  .nav-actions {
+    display: none;
+  }
 }
 
 /* Hero Section */
@@ -231,7 +298,7 @@ ul {
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(to top, var(--color-bg-dark), transparent);
+  background: var(--hero-gradient);
 }
 
 .hero-content {
@@ -244,23 +311,48 @@ ul {
   align-items: center;
 }
 
-.hero-logo {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 2rem;
-  border-radius: 20px; /* if it's square, or use object-fit */
-  box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
-}
+/* .hero-logo removed */
 
 .hero-title {
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
   margin-bottom: 1rem;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease-out;
+}
+
+/* Interactive Title & Typography */
+.interactive-title {
+  display: inline-block;
+  position: relative;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: var(--color-green-light);
+  animation: blink 1s step-end infinite;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px) scale(1.05);
 }
 
 .hero-tagline {
   font-size: clamp(1.1rem, 2vw, 1.5rem);
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   margin-bottom: 2.5rem;
   font-weight: 400;
   max-width: 600px;
@@ -316,7 +408,7 @@ ul {
 }
 
 .section-subtitle {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   font-size: 1.125rem;
   max-width: 600px;
   margin: 0 auto;
@@ -327,7 +419,7 @@ ul {
 }
 
 .bg-darker {
-  background: #0B1121; /* Slightly darker than main bg */
+  background: var(--bg-secondary);
 }
 
 /* About Section */
@@ -342,14 +434,15 @@ ul {
 }
 
 .about-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: 2.5rem 2rem;
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .icon-wrap {
@@ -372,13 +465,13 @@ ul {
 }
 
 .about-card p {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
 .glow-hover:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
   border-color: rgba(16, 185, 129, 0.3);
   box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.2);
 }
@@ -397,13 +490,14 @@ ul {
 }
 
 .item-card {
-  background: linear-gradient(145deg, rgba(30, 58, 138, 0.1), rgba(15, 23, 42, 0.5));
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
   border-radius: 20px;
   padding: 3rem 2rem;
   text-align: left;
   transition: all 0.4s ease;
   position: relative;
+  backdrop-filter: blur(10px);
 }
 
 .item-card::before {
@@ -432,7 +526,7 @@ ul {
 }
 
 .card-desc {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   line-height: 1.7;
 }
 
@@ -479,8 +573,8 @@ ul {
 
 .team-card {
   width: 280px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 24px;
   padding: 2.5rem 1.5rem;
   text-align: center;
@@ -493,7 +587,7 @@ ul {
 
 .team-card:hover {
   transform: scale(1.05);
-  background: rgba(30, 58, 138, 0.3);
+  background: var(--gradient-card);
   border-color: rgba(16, 185, 129, 0.4);
   box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.3);
 }
@@ -548,8 +642,8 @@ ul {
 }
 
 .recruit-box {
-  background: linear-gradient(160deg, rgba(30, 58, 138, 0.2), rgba(16, 185, 129, 0.1));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
   padding: 5rem 2rem;
   border-radius: 30px;
   backdrop-filter: blur(15px);
@@ -566,8 +660,8 @@ ul {
 }
 
 .trait-badge {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
   font-size: 0.95rem;
@@ -575,6 +669,7 @@ ul {
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
 .trait-badge i {
@@ -599,12 +694,13 @@ ul {
 .event-card {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 20px;
   padding: 1.5rem;
   transition: all 0.4s ease;
   gap: 2rem;
+  backdrop-filter: blur(10px);
 }
 
 .event-date {
@@ -633,7 +729,7 @@ ul {
 }
 
 .event-info p {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
 }
 
 .tilt-hover:hover {
@@ -653,8 +749,8 @@ ul {
 
 /* Footer */
 .footer {
-  background: var(--color-bg-dark);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-primary);
+  border-top: 1px solid var(--card-border);
   padding: 4rem 2rem 2rem;
 }
 
@@ -671,14 +767,14 @@ ul {
 }
 
 .footer-brand p {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
 .footer h4 {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  color: white;
+  color: var(--text-primary);
 }
 
 .social-icons {
@@ -693,8 +789,9 @@ ul {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
@@ -706,7 +803,7 @@ ul {
 }
 
 .footer-contact p {
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -715,8 +812,8 @@ ul {
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--color-text-muted);
+  border-top: 1px solid var(--card-border);
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
