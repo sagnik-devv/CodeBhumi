@@ -245,13 +245,27 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeWriter, 1000);
   }
 
-  // 7. Parallax effect on Hero Content
+  // 7. 3D Parallax effect on Hero Content
+  const hero = document.getElementById("home");
   const heroContent = document.getElementById("hero-content");
-  if(heroContent) {
-    document.addEventListener("mousemove", (e) => {
-      const x = (window.innerWidth / 2 - e.pageX) / 50;
-      const y = (window.innerHeight / 2 - e.pageY) / 50;
-      heroContent.style.transform = `translate(${x}px, ${y}px)`;
+  if(hero && heroContent) {
+    hero.addEventListener("mousemove", (e) => {
+      // Calculate rotation based on cursor position relative to window center
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 40; 
+      const yAxis = (window.innerHeight / 2 - e.pageY) / -40;
+      heroContent.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+
+    // Reset rotation smoothly when mouse leaves
+    hero.addEventListener("mouseleave", () => {
+      heroContent.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      heroContent.style.transition = "transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+    });
+
+    // Remove transition when hovering for responsive tracking
+    hero.addEventListener("mouseenter", () => {
+      // A small smooth transition to catch up
+      heroContent.style.transition = "transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; 
     });
   }
 });
