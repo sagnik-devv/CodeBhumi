@@ -638,9 +638,7 @@ ul {
   width: 100%;
   overflow: hidden;
   position: relative;
-  /* Fading edges */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  /* Removed fading edges to keep cards visible entirely from the edge */
 }
 
 .marquee-content {
