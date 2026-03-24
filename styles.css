@@ -676,6 +676,61 @@ ul {
   box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.3);
 }
 
+/* Honorary Advisor Styles */
+.advisor-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--card-border);
+  position: relative;
+  z-index: 10;
+}
+
+.advisor-heading {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.advisor-container {
+  display: flex;
+  justify-content: center;
+}
+
+.advisor-card {
+  width: 320px;
+  background: var(--gradient-card);
+  border: 2px solid rgba(245, 158, 11, 0.3); /* Gold Theme */
+  box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1);
+}
+
+.advisor-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.6);
+}
+
+.advisor-img {
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, #F59E0B, #FDE68A) border-box;
+}
+
+.advisor-card .member-role {
+  color: #FBBF24;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.advisor-card .member-desc {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
 .profile-img {
   width: 120px;
   height: 120px;
