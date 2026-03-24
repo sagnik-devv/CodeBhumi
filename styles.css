@@ -823,38 +823,42 @@ ul {
 
 /* Events Section */
 .events-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .event-card {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 20px;
-  padding: 1.5rem;
-  transition: all 0.4s ease;
-  gap: 2rem;
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  gap: 1.5rem;
   backdrop-filter: blur(10px);
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
 }
 
 .event-date {
   background: linear-gradient(135deg, var(--color-blue), var(--color-green));
   color: white;
-  min-width: 80px;
-  height: 80px;
+  min-width: 90px;
+  height: 90px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+  transition: all 0.4s ease;
 }
 
 .event-date span {
@@ -863,26 +867,40 @@ ul {
 }
 
 .event-info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .event-info p {
   color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.tilt-hover {
+  transform-style: preserve-3d;
 }
 
 .tilt-hover:hover {
-  transform: translateX(10px) scale(1.02);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+  transform: translateY(-15px) rotateX(10deg) rotateY(-5deg) scale(1.05);
+  background: var(--gradient-card);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: -15px 25px 40px -10px rgba(16, 185, 129, 0.3);
+}
+
+/* 3D Depth for content on hover */
+.tilt-hover:hover .event-date {
+  transform: translateZ(50px) scale(1.1);
+}
+
+.tilt-hover:hover .event-info {
+  transform: translateZ(30px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @media (max-width: 600px) {
   .event-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    aspect-ratio: auto;
+    padding: 3rem 1.5rem;
   }
 }
 
