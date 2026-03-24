@@ -62,6 +62,45 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* Custom Cursor (Desktop Only) */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  
+  .cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+  }
+
+  .cursor-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-green);
+    transform: translate(calc(-50%), calc(-50%));
+  }
+
+  .cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-green);
+    opacity: 0.5;
+    transform: translate(calc(-50%), calc(-50%));
+    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-outline {
+    display: none;
+  }
+}
+
 /* Base Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Outfit', sans-serif;

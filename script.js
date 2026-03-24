@@ -268,4 +268,48 @@ document.addEventListener("DOMContentLoaded", () => {
       heroContent.style.transition = "transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)"; 
     });
   }
+
+  // --- Custom Cursor Logic ---
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorOutline = document.querySelector('.cursor-outline');
+
+  if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // Dot is instant
+      cursorDot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
+    });
+
+    const renderCursor = () => {
+      // Outline follows with easing for that "classy" trailing effect
+      outlineX += (mouseX - outlineX) * 0.15;
+      outlineY += (mouseY - outlineY) * 0.15;
+      
+      cursorOutline.style.transform = `translate(calc(${outlineX}px - 50%), calc(${outlineY}px - 50%))`;
+      requestAnimationFrame(renderCursor);
+    };
+    requestAnimationFrame(renderCursor);
+
+    // Hover effects for interactive elements
+    const interactives = document.querySelectorAll('a, button, .card, .team-card, .event-card');
+    interactives.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorOutline.style.width = '60px';
+        cursorOutline.style.height = '60px';
+        cursorOutline.style.backgroundColor = 'rgba(16, 185, 129, 0.1)'; // Subtle green glow inside
+        cursorOutline.style.borderColor = 'rgba(16, 185, 129, 0.8)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorOutline.style.width = '40px';
+        cursorOutline.style.height = '40px';
+        cursorOutline.style.backgroundColor = 'transparent';
+        cursorOutline.style.borderColor = 'var(--color-green)';
+      });
+    });
+  }
 });
+
