@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply - CodeBhumi</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="Org Logo.jpg">
+  <link rel="apple-touch-icon" href="Org Logo.jpg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Specific styles for Apply Page */
+    body {
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .apply-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+    
+    .apply-container {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      background: var(--gradient-card);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(20px);
+      z-index: 2;
+    }
+
+    .apply-info {
+      flex: 1;
+      padding: 4rem;
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(16, 185, 129, 0.2));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .apply-info-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .apply-info-content p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .perks-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .perks-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .perks-list i {
+      color: var(--color-green-light);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      width: 30px;
+      text-align: center;
+    }
+
+    .apply-form-wrapper {
+      flex: 1.2;
+      padding: 4rem;
+      background: var(--card-bg);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    [data-theme="light"] .form-control {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-green-light);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: var(--color-green-light);
+    }
+
+    /* Loader and Success States */
+    .loader {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      color: var(--color-green-light);
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .apply-container {
+        flex-direction: column;
+      }
+      .apply-info {
+        padding: 3rem 2rem;
+      }
+      .apply-form-wrapper {
+        padding: 3rem 2rem;
+      }
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
+    /* Restore native cursors for form usability */
+    @media (pointer: fine) {
+      * { cursor: auto !important; }
+      a, button, .back-link, .theme-toggle-btn { cursor: pointer !important; }
+      input, textarea { cursor: text !important; }
+      .cursor-dot, .cursor-outline { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  
+  <!-- Navbar (Simplified) -->
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="Org Logo.jpg" alt="CodeBhumi Logo">
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="apply-section">
+    <!-- Background Elements -->
+    <div class="hero-bg" style="position: fixed;">
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-glow glow-1" style="top: 20%; left: 10%;"></div>
+    <div class="hero-glow glow-2" style="bottom: 10%; right: 10%;"></div>
+
+    <div class="apply-container">
+      <!-- Info Side -->
+      <div class="apply-info">
+        <div>
+          <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+          <div class="apply-info-content">
+            <h2>Join <span class="text-gradient">CodeBhumi</span></h2>
+            <p>Take the next step in your technical journey. Build real-world projects, master industry skills, and become part of an elite developer community.</p>
+            
+            <ul class="perks-list">
+              <li><i class="fa-solid fa-laptop-code"></i> Mentored by Industry Experts</li>
+              <li><i class="fa-solid fa-rocket"></i> Hands-on Project Development</li>
+              <li><i class="fa-solid fa-handshake-angle"></i> Real Social Impact Work</li>
+              <li><i class="fa-solid fa-briefcase"></i> Resume & Interview Prep</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="apply-form-wrapper">
+        <div id="application-form-container">
+          <h3 style="font-size: 1.8rem; margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">Application Form</h3>
+          <form id="applyForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fullName">Full Name *</label>
+                <input type="text" id="fullName" class="form-control" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input type="email" id="email" class="form-control" required placeholder="john@example.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-control" required placeholder="+91 9876543210">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="university">University/College *</label>
+                <input type="text" id="university" class="form-control" required placeholder="Lovely Professional University">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regNumber">Registration Number *</label>
+              <input type="text" id="regNumber" class="form-control" required placeholder="e.g., 12200001">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="github">GitHub Profile Link</label>
+              <input type="url" id="github" class="form-control" placeholder="https://github.com/username">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="linkedin">LinkedIn Profile Link</label>
+              <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/username">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reason">Why do you want to join CodeBhumi? *</label>
+              <textarea id="reason" class="form-control" required placeholder="Tell us about your technical goals and what you hope to achieve..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large submit-btn">
+              <span id="btn-text">Submit Application</span>
+              <div class="loader" id="btn-loader"></div>
+            </button>
+            <p id="form-error" style="color: #ef4444; margin-top: 1rem; text-align: center; display: none;"></p>
+          </form>
+        </div>
+
+        <!-- Success Message (Hidden by default) -->
+        <div id="success-state" class="success-message">
+          <i class="fa-solid fa-circle-check success-icon"></i>
+          <h3 style="font-size: 2rem; margin-bottom: 1rem; font-family: 'Outfit';">Application Received!</h3>
+          <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">Thank you for applying to CodeBhumi. Our team will review your application and contact you soon via email.</p>
+          <a href="index.html" class="btn btn-secondary">Return to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="apply.js"></script>
+</body>
+</html>
