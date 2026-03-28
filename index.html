@@ -169,12 +169,122 @@
       <!-- Honorary Advisor -->
       <div class="advisor-section">
         <h3 class="advisor-heading">Mentorship & Guidance</h3>
+        <style>
+          .advisor-card-horizontal {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-align: left;
+            gap: 2.5rem;
+            padding: 2.5rem;
+            background: var(--gradient-card);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1);
+            transition: all 0.4s ease;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+          }
+          .advisor-card-horizontal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(245, 158, 11, 0.2);
+            border-color: rgba(245, 158, 11, 0.6);
+          }
+          .advisor-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          .advisor-title {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+            background: linear-gradient(135deg, #FBBF24, #F59E0B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+          .advisor-verified {
+            color: #F59E0B;
+            font-size: 1.3rem;
+            -webkit-text-fill-color: initial;
+          }
+          .linkedin-link {
+            -webkit-text-fill-color: initial;
+            color: #3b82f6;
+            font-size: 1.8rem;
+            margin-left: 0.8rem;
+            transition: all 0.3s ease;
+          }
+          .linkedin-link:hover {
+            transform: scale(1.15) translateY(-2px);
+            color: #60a5fa;
+          }
+          .advisor-subrole {
+            color: #FBBF24;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+          .advisor-achievements {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+          .advisor-achievements li {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            line-height: 1.5;
+          }
+          .advisor-achievements i {
+            color: #F59E0B;
+            margin-top: 4px;
+          }
+          @media (max-width: 768px) {
+            .advisor-card-horizontal {
+              flex-direction: column;
+              text-align: center;
+              padding: 2rem 1.5rem;
+              gap: 1.5rem;
+            }
+            .advisor-title {
+              justify-content: center;
+            }
+            .advisor-achievements li {
+              text-align: left;
+            }
+          }
+        </style>
+        
         <div class="advisor-container">
-          <div class="team-card advisor-card">
-            <div class="profile-img advisor-img"><img src="Souhardya_bose.jpg" alt="Souhardya Bose"></div>
-            <h3 class="member-name">Souhardya Bose</h3>
-            <p class="member-role">Honorary Advisor</p>
-            <p class="member-desc">Asst. Prof, Lovely Professional University</p>
+          <div class="advisor-card-horizontal">
+            <div class="profile-img advisor-img" style="margin: 0; flex-shrink: 0;">
+              <img src="Souhardya_bose.jpg" alt="Souhardya Bose">
+            </div>
+            <div class="advisor-content">
+              <h3 class="advisor-title">
+                Souhardya Bose <i class="fa-solid fa-circle-check advisor-verified"></i>
+                <a href="https://www.linkedin.com/in/souhardya-bose/" target="_blank" class="linkedin-link" aria-label="LinkedIn Profile">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </h3>
+              <p class="advisor-subrole">Honorary Advisor &bull; Head of Student Career Council</p>
+              <ul class="advisor-achievements">
+                <li><i class="fa-solid fa-award"></i> NEP SAARTHI Appointed By UGC, Ministry of Education</li>
+                <li><i class="fa-solid fa-certificate"></i> IEEE LPU CHAIR-PERSON &amp; Founding Member</li>
+                <li><i class="fa-solid fa-building-columns"></i> Assistant Professor, Lovely Professional University</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -187,22 +297,42 @@
         <!-- Original Cards -->
         <div class="team-card">
           <div class="profile-img"><img src="Sayantan.jpeg" alt="Sayantan"></div>
-          <h3 class="member-name">Sayantan</h3>
+          <h3 class="member-name">
+            Sayantan
+            <a href="https://www.linkedin.com/in/sayantan-ghosh-372143314/" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Joint Vice President</p>
         </div>
         <div class="team-card">
           <div class="profile-img"><img src="sagnik.jpg" alt="Sagnik"></div>
-          <h3 class="member-name">Sagnik</h3>
+          <h3 class="member-name">
+            Sagnik
+            <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Joint Vice President</p>
         </div>
         <div class="team-card">
           <div class="profile-img"><img src="Saikat.jpeg" alt="Saikat"></div>
-          <h3 class="member-name">Saikat</h3>
+          <h3 class="member-name">
+            Saikat
+            <a href="https://www.linkedin.com/in/saikat-singha-mahapatra-dev?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Research & Innovation Head</p>
         </div>
         <div class="team-card">
           <div class="profile-img"><img src="Pritam.jpeg" alt="Pritam"></div>
-          <h3 class="member-name">Pritam</h3>
+          <h3 class="member-name">
+            Pritam
+            <a href="https://www.linkedin.com/in/pritammandal-cse?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Head of Operations</p>
         </div>
         <div class="team-card">
@@ -219,22 +349,42 @@
         <!-- Duplicated Cards for infinite loop effect -->
         <div class="team-card">
           <div class="profile-img"><img src="Sayantan.jpeg" alt="Sayantan"></div>
-          <h3 class="member-name">Sayantan</h3>
+          <h3 class="member-name">
+            Sayantan
+            <a href="https://www.linkedin.com/in/sayantan-ghosh-372143314/" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Joint Vice President</p>
         </div>
         <div class="team-card">
           <div class="profile-img"><img src="sagnik.jpg" alt="Sagnik"></div>
-          <h3 class="member-name">Sagnik</h3>
+          <h3 class="member-name">
+            Sagnik
+            <a href="https://www.linkedin.com/in/sagnik-chakraborty-0ab433364/" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Joint Vice President</p>
         </div>
         <div class="team-card">
           <div class="profile-img"><img src="Saikat.jpeg" alt="Saikat"></div>
-          <h3 class="member-name">Saikat</h3>
+          <h3 class="member-name">
+            Saikat
+            <a href="https://www.linkedin.com/in/saikat-singha-mahapatra-dev?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Research & Innovation Head</p>
         </div>
         <div class="team-card">
           <div class="profile-img"><img src="Pritam.jpeg" alt="Pritam"></div>
-          <h3 class="member-name">Pritam</h3>
+          <h3 class="member-name">
+            Pritam
+            <a href="https://www.linkedin.com/in/pritammandal-cse?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn" style="color: #3b82f6; font-size: 1.2rem; margin-left: 0.4rem; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </h3>
           <p class="member-role">Head of Operations</p>
         </div>
         <div class="team-card">
