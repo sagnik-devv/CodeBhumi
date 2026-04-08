@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -301,6 +301,21 @@
       .form-row {
         flex-direction: column;
         gap: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .apply-info, .apply-form-wrapper {
+        padding: 2rem 1.5rem;
+      }
+      .apply-info-content h2 {
+        font-size: 2.2rem;
+      }
+      .apply-container {
+        border-radius: 20px;
+      }
+      .perks-list li {
+        font-size: 0.95rem;
       }
     }
 

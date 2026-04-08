@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
       htmlEl.setAttribute("data-theme", savedTheme);
       icon.className = savedTheme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
     } else {
-      htmlEl.setAttribute("data-theme", "dark");
-      icon.className = "fa-solid fa-sun";
+      htmlEl.setAttribute("data-theme", "light");
+      icon.className = "fa-solid fa-moon";
     }
 
     themeToggleParam.addEventListener("click", () => {

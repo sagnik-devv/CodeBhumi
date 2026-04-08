@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCDOrHE8YlvC_Nrmakg6OS7yu-wJFyaJRA",
@@ -52,6 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             try {
+                // Check if this Registration ID has already applied
+                const q = query(collection(db, "applications"), where("regNumber", "==", formData.regNumber));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    // Registration ID already exists! Redirect to already-registered page.
+                    window.location.assign('./already-registered.html');
+                    return;
+                }
+
                 // Add a new document with a generated id to "applications" collection
                 await addDoc(collection(db, "applications"), formData);
                 

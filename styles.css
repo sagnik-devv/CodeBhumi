@@ -1044,3 +1044,60 @@ ul {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ---------------------------------
+   Global Mobile Responsiveness 
+--------------------------------- */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem !important;
+  }
+  
+  .hero {
+    padding: 6rem 1rem 3rem !important;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.2rem, 8vw, 3.2rem) !important;
+  }
+  
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.3rem) !important;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  .btn-large {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .about-card, .item-card, .event-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .team-card {
+    width: 250px;
+    padding: 2rem 1rem;
+  }
+  
+  .recruit-box {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .team-card {
+    width: 220px;
+  }
+}
