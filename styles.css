@@ -423,6 +423,34 @@ ul {
   position: relative;
 }
 
+.leaf-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.leaf-dot {
+  position: absolute;
+  top: -0.3em;
+  left: 50%;
+  transform: translateX(-50%) rotate(15deg);
+  font-size: 0.55em;
+  color: var(--color-green-light);
+  background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.4));
+  z-index: 10;
+  animation: leaf-float 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes leaf-float {
+  0% { transform: translateX(-50%) translateY(0) rotate(15deg); }
+  50% { transform: translateX(-50%) translateY(-6px) rotate(22deg); }
+  100% { transform: translateX(-50%) translateY(0) rotate(15deg); }
+}
+
 .cursor {
   display: inline-block;
   width: 3px;

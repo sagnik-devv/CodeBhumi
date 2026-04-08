@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apply - CodeBhumi</title>
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="Org Logo.jpg">
-  <link rel="apple-touch-icon" href="Org Logo.jpg">
+  <link rel="icon" type="image/jpeg" href="Org%20Logo.jpeg?v=2">
+  <link rel="apple-touch-icon" href="Org%20Logo.jpeg?v=2">
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
@@ -23,81 +21,123 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      background: var(--bg-secondary);
     }
     
+    .bg-animation {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+    }
+
+    [data-theme="light"] .bg-animation {
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    }
+
     .apply-section {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6rem 2rem 4rem;
+      padding: 7rem 2rem 4rem;
       position: relative;
     }
     
     .apply-container {
       display: flex;
-      max-width: 1200px;
+      max-width: 1100px;
       width: 100%;
-      background: var(--gradient-card);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.15));
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       z-index: 2;
+    }
+
+    [data-theme="light"] .apply-container {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 246, 244, 0.8));
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     }
 
     .apply-info {
       flex: 1;
-      padding: 4rem;
-      background: linear-gradient(135deg, rgba(30, 58, 138, 0.4), rgba(16, 185, 129, 0.2));
+      padding: 3.5rem;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.08));
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    [data-theme="light"] .apply-info {
+      border-right: 1px solid rgba(0,0,0,0.05);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(16, 185, 129, 0.05));
     }
 
     .apply-info-content h2 {
       font-size: 3rem;
+      font-family: 'Outfit', sans-serif;
       margin-bottom: 1.5rem;
+      letter-spacing: -1px;
     }
 
     .apply-info-content p {
       font-size: 1.1rem;
       color: var(--text-muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       line-height: 1.7;
     }
 
     .perks-list {
       list-style: none;
       padding: 0;
+      margin-top: auto;
     }
 
     .perks-list li {
       display: flex;
       align-items: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       font-size: 1.05rem;
       font-weight: 500;
+      color: #E2E8F0;
+    }
+    
+    [data-theme="light"] .perks-list li {
+      color: var(--text-primary);
     }
 
     .perks-list i {
       color: var(--color-green-light);
-      font-size: 1.5rem;
-      margin-right: 1rem;
-      width: 30px;
-      text-align: center;
+      font-size: 1.25rem;
+      margin-right: 1.2rem;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
     }
 
     .apply-form-wrapper {
-      flex: 1.2;
-      padding: 4rem;
-      background: var(--card-bg);
+      flex: 1.3;
+      padding: 3.5rem;
+      background: transparent;
     }
 
     .form-group {
       margin-bottom: 1.5rem;
-      position: relative;
     }
 
     .form-row {
@@ -111,38 +151,93 @@
 
     .form-label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text-primary);
+      font-size: 0.85rem;
+      color: #94A3B8;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    [data-theme="light"] .form-label {
+      color: #475569;
+    }
+    
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1.2rem;
+      color: #64748B;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      font-size: 1rem;
     }
 
     .form-control {
       width: 100%;
-      padding: 1rem 1.2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
+      padding: 1rem 1.2rem 1rem 3.2rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      color: var(--text-primary);
+      color: white;
       font-family: var(--font-main);
       font-size: 1rem;
       transition: all 0.3s ease;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
     }
 
     [data-theme="light"] .form-control {
-      background: rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: var(--text-primary);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .form-control::placeholder {
+      color: #475569;
+    }
+
+    [data-theme="light"] .form-control::placeholder {
+      color: #94A3B8;
     }
 
     .form-control:focus {
       outline: none;
       border-color: var(--color-green-light);
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
-      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), inset 0 2px 4px rgba(0,0,0,0.2);
+      background: rgba(15, 23, 42, 0.9);
     }
 
-    textarea.form-control {
-      resize: vertical;
-      min-height: 120px;
+    [data-theme="light"] .form-control:focus {
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .input-wrapper:focus-within .input-icon {
+      color: var(--color-green-light);
+    }
+
+    select.form-control {
+      appearance: none;
+      cursor: pointer;
+    }
+    
+    .select-arrow {
+      position: absolute;
+      right: 1.2rem;
+      pointer-events: none;
+      color: #64748B;
+      transition: all 0.3s ease;
+    }
+    
+    .input-wrapper:focus-within .select-arrow {
+      color: var(--color-green-light);
+      transform: rotate(180deg);
     }
 
     .submit-btn {
@@ -152,23 +247,31 @@
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      border-radius: 12px;
+      padding: 1.1rem;
     }
 
     .back-link {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: var(--text-muted);
+      color: #94A3B8;
       font-weight: 600;
       margin-bottom: 2rem;
       transition: color 0.3s ease;
+      padding: 8px 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50px;
+      font-size: 0.9rem;
     }
 
     .back-link:hover {
-      color: var(--color-green-light);
+      color: white;
+      background: rgba(255,255,255,0.1);
     }
 
-    /* Loader and Success States */
     .loader {
       display: none;
       width: 20px;
@@ -183,33 +286,17 @@
       to { transform: rotate(360deg); }
     }
 
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    .success-icon {
-      font-size: 4rem;
-      color: var(--color-green-light);
-      margin-bottom: 1.5rem;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 900px) {
       .apply-container {
         flex-direction: column;
       }
       .apply-info {
-        padding: 3rem 2rem;
+        padding: 2.5rem 2rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
       }
       .apply-form-wrapper {
-        padding: 3rem 2rem;
+        padding: 2.5rem 2rem;
       }
       .form-row {
         flex-direction: column;
@@ -217,42 +304,29 @@
       }
     }
 
-    /* Restore native cursors for form usability */
     @media (pointer: fine) {
       * { cursor: auto !important; }
-      a, button, .back-link, .theme-toggle-btn { cursor: pointer !important; }
+      a, button, .back-link, .theme-toggle-btn, select.form-control { cursor: pointer !important; }
       input, textarea { cursor: text !important; }
       .cursor-dot, .cursor-outline { display: none !important; }
     }
   </style>
 </head>
 <body>
-  <!-- Custom Cursor -->
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
+  <!-- Ambient Background -->
+  <div class="bg-animation"></div>
+  <div class="hero-grid" style="position: fixed; opacity: 0.15;"></div>
   
-  <!-- Navbar (Simplified) -->
+  <!-- Navbar -->
   <nav id="navbar" class="navbar scrolled">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <img src="Org Logo.jpg" alt="CodeBhumi Logo">
+        <img src="Org Logo.jpeg" alt="CodeBhumi Logo">
       </a>
-      <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-          <i class="fa-solid fa-sun"></i>
-        </button>
-      </div>
     </div>
   </nav>
 
   <section class="apply-section">
-    <!-- Background Elements -->
-    <div class="hero-bg" style="position: fixed;">
-      <div class="hero-grid"></div>
-    </div>
-    <div class="hero-glow glow-1" style="top: 20%; left: 10%;"></div>
-    <div class="hero-glow glow-2" style="bottom: 10%; right: 10%;"></div>
-
     <div class="apply-container">
       <!-- Info Side -->
       <div class="apply-info">
@@ -260,63 +334,104 @@
           <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
           <div class="apply-info-content">
             <h2>Join <span class="text-gradient">CodeBhumi</span></h2>
-            <p>Take the next step in your technical journey. Build real-world projects, master industry skills, and become part of an elite developer community.</p>
-            
-            <ul class="perks-list">
-              <li><i class="fa-solid fa-laptop-code"></i> Mentored by Industry Experts</li>
-              <li><i class="fa-solid fa-rocket"></i> Hands-on Project Development</li>
-              <li><i class="fa-solid fa-handshake-angle"></i> Real Social Impact Work</li>
-              <li><i class="fa-solid fa-briefcase"></i> Resume & Interview Prep</li>
-            </ul>
+            <p>Take the next step in your technical journey. Build real-world projects, master industry skills, and become part of our developer community.</p>
           </div>
         </div>
+        
+        <ul class="perks-list">
+          <li><i class="fa-solid fa-laptop-code"></i> Mentored by Industry Experts</li>
+          <li><i class="fa-solid fa-rocket"></i> Hands-on Project Development</li>
+          <li><i class="fa-solid fa-handshake-angle"></i> Real Social Impact Work</li>
+          <li><i class="fa-solid fa-briefcase"></i> Resume & Interview Prep</li>
+        </ul>
       </div>
 
       <!-- Form Side -->
       <div class="apply-form-wrapper">
         <div id="application-form-container">
-          <h3 style="font-size: 1.8rem; margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">Application Form</h3>
+          <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; font-family: 'Outfit', sans-serif;">Application Form</h3>
           <form id="applyForm">
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="fullName">Full Name *</label>
-                <input type="text" id="fullName" class="form-control" required placeholder="John Doe">
+                <label class="form-label" for="fullName">Full Name</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-user input-icon"></i>
+                  <input type="text" id="fullName" class="form-control" required placeholder="John Doe">
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="email">Email Address *</label>
-                <input type="email" id="email" class="form-control" required placeholder="john@example.com">
+                <label class="form-label" for="regNumber">Registration ID</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-id-card input-icon"></i>
+                  <input type="text" id="regNumber" class="form-control" required placeholder="12220000">
+                </div>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="phone">Phone Number *</label>
-                <input type="tel" id="phone" class="form-control" required placeholder="+91 9876543210">
+                <label class="form-label" for="phone">Phone Number</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-phone input-icon"></i>
+                  <input type="tel" id="phone" class="form-control" required placeholder="+91 9876543210">
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="university">University/College *</label>
-                <input type="text" id="university" class="form-control" required placeholder="Lovely Professional University">
+                <label class="form-label" for="studyYear">Which Year</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-graduation-cap input-icon"></i>
+                  <select id="studyYear" class="form-control" required>
+                    <option value="" disabled selected>Select your year</option>
+                    <option value="1st">1st Year</option>
+                    <option value="2nd">2nd Year</option>
+                    <option value="3rd">3rd Year</option>
+                    <option value="4th">4th Year</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down select-arrow"></i>
+                </div>
               </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="regNumber">Registration Number *</label>
-              <input type="text" id="regNumber" class="form-control" required placeholder="e.g., 12200001">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cgpa">Current CGPA</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-star input-icon"></i>
+                  <input type="number" step="0.01" min="0" max="10" id="cgpa" class="form-control" required placeholder="8.5">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="github">GitHub Link</label>
+                <div class="input-wrapper">
+                  <i class="fa-brands fa-github input-icon"></i>
+                  <input type="url" id="github" class="form-control" placeholder="https://github.com/username">
+                </div>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="github">GitHub Profile Link</label>
-              <input type="url" id="github" class="form-control" placeholder="https://github.com/username">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="projectName">Live Project Name</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-laptop-code input-icon"></i>
+                  <input type="text" id="projectName" class="form-control" placeholder="Project Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="projectLink">Live Project Link</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-link input-icon"></i>
+                  <input type="url" id="projectLink" class="form-control" placeholder="https://myproject.com">
+                </div>
+              </div>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="linkedin">LinkedIn Profile Link</label>
-              <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/username">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="reason">Why do you want to join CodeBhumi? *</label>
-              <textarea id="reason" class="form-control" required placeholder="Tell us about your technical goals and what you hope to achieve..."></textarea>
+              <div class="input-wrapper">
+                <i class="fa-brands fa-linkedin input-icon"></i>
+                <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/username">
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-large submit-btn">
@@ -326,19 +441,11 @@
             <p id="form-error" style="color: #ef4444; margin-top: 1rem; text-align: center; display: none;"></p>
           </form>
         </div>
-
-        <!-- Success Message (Hidden by default) -->
-        <div id="success-state" class="success-message">
-          <i class="fa-solid fa-circle-check success-icon"></i>
-          <h3 style="font-size: 2rem; margin-bottom: 1rem; font-family: 'Outfit';">Application Received!</h3>
-          <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">Thank you for applying to CodeBhumi. Our team will review your application and contact you soon via email.</p>
-          <a href="index.html" class="btn btn-secondary">Return to Home</a>
-        </div>
       </div>
     </div>
   </section>
 
   <script src="script.js"></script>
-  <script src="apply.js"></script>
+  <script type="module" src="apply.js"></script>
 </body>
 </html>

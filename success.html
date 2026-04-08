@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Application Submitted - CodeBhumi</title>
   
-  <link rel="icon" type="image/jpeg" href="Org Logo.jpg">
-  <link rel="apple-touch-icon" href="Org Logo.jpg">
+  <link rel="icon" type="image/jpeg" href="Org%20Logo.jpeg?v=2">
+  <link rel="apple-touch-icon" href="Org%20Logo.jpeg?v=2">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,62 +22,204 @@
       min-height: 100vh;
       align-items: center;
       justify-content: center;
+      background: var(--bg-secondary, #0B1121);
+      transition: background-color 0.4s ease;
     }
     
+    .top-actions {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      z-index: 50;
+    }
+    
+    .theme-toggle-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-primary);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    [data-theme="light"] .theme-toggle-btn {
+      background: rgba(0,0,0,0.05);
+      border-color: rgba(0,0,0,0.1);
+      color: #1C1917;
+    }
+
+    .bg-animation {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
+    }
+
+    [data-theme="light"] .bg-animation {
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+    }
+
+    canvas#confetti-canvas {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 100;
+    }
+
     .success-container {
-      background: var(--gradient-card);
-      border: 1px solid var(--color-green-light);
-      border-radius: 24px;
-      padding: 5rem 3rem;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.2));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 30px;
+      padding: 4rem 3rem;
       text-align: center;
-      max-width: 600px;
+      max-width: 650px;
       width: 90%;
-      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       position: relative;
       z-index: 10;
-      backdrop-filter: blur(10px);
-      animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transform: translateY(50px);
+      opacity: 0;
+      animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.9) translateY(30px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
+    [data-theme="light"] .success-container {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 246, 244, 0.8));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
     }
 
-    .success-logo {
+    @keyframes slideUpFade {
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .icon-wrapper {
+      position: relative;
       width: 120px;
       height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 2rem;
-      border: 4px solid var(--color-green-light);
-      padding: 4px;
-      background: var(--card-bg);
-      animation: pulseGlow 2s infinite alternate;
+      margin: 0 auto 2.5rem;
     }
 
-    .success-logo img {
+    .success-svg {
       width: 100%;
       height: 100%;
+      z-index: 2;
+      position: relative;
+    }
+
+    .success-svg circle {
+      stroke-dasharray: 260;
+      stroke-dashoffset: 260;
+      animation: drawCircle 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+      animation-delay: 0.2s;
+    }
+
+    .success-svg path {
+      stroke-dasharray: 80;
+      stroke-dashoffset: 80;
+      animation: drawCheck 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+      animation-delay: 0.8s;
+    }
+
+    @keyframes drawCircle {
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes drawCheck {
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .icon-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 130px;
+      height: 130px;
+      background: rgba(16, 185, 129, 0.4);
+      filter: blur(30px);
       border-radius: 50%;
-      object-fit: cover;
+      z-index: 1;
+      animation: pulseGlow 3s infinite alternate;
+      animation-delay: 1.5s;
+      opacity: 0;
     }
 
     @keyframes pulseGlow {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-      100% { box-shadow: 0 0 20px 10px rgba(16, 185, 129, 0.1); }
+      0% { opacity: 0.4; transform: translate(-50%, -50%) scale(0.9); }
+      100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
     }
 
     .success-container h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
+      font-family: 'Outfit', sans-serif;
       margin-bottom: 1rem;
-      line-height: 1.2;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      animation: fadeInText 0.8s ease forwards;
+      animation-delay: 1s;
+    }
+
+    [data-theme="light"] .success-container h1 {
+      background: linear-gradient(to right, #1C1917, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .success-container p {
       color: var(--text-muted);
-      font-size: 1.15rem;
-      margin-bottom: 2.5rem;
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
       line-height: 1.6;
+      opacity: 0;
+      animation: fadeInText 0.8s ease forwards;
+      animation-delay: 1.3s;
+    }
+
+    .action-box {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      opacity: 0;
+      animation: popBtn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 1.6s;
+    }
+
+    .delay-2 {
+      animation-delay: 5.5s; /* Appears after confetti finishes */
+    }
+
+    @keyframes fadeInText {
+      100% { opacity: 1; }
+    }
+
+    @keyframes popBtn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     @media (pointer: fine) {
@@ -88,22 +230,106 @@
   </style>
 </head>
 <body>
-  <!-- Background Elements -->
-  <div class="hero-bg" style="position: fixed;">
-    <div class="hero-grid"></div>
+  <!-- Theme Toggle -->
+  <div class="top-actions">
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+      <i class="fa-solid fa-sun"></i>
+    </button>
   </div>
-  <div class="hero-glow glow-1" style="top: -10%; left: 0%;"></div>
-  <div class="hero-glow glow-2" style="bottom: -10%; right: 0%;"></div>
 
-  <div class="success-container">
-    <div class="success-logo">
-      <img src="Org Logo.jpg" alt="CodeBhumi Logo">
+  <!-- Ambient Background -->
+  <div class="bg-animation"></div>
+  <div class="hero-grid" style="position: fixed; opacity: 0.2;"></div>
+  
+  <!-- Canvas for Confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="success-container" id="screenshot-capture-area">
+    <div class="icon-wrapper">
+      <div class="icon-glow"></div>
+      <svg class="success-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#10b981" stroke-width="6" stroke-linecap="round"/>
+        <path d="M30 50 L45 65 L70 35" fill="none" stroke="#34d399" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
-    <h1>Application Submitted!</h1>
-    <p>Your form has been submitted successfully.<br>We are looking forward to seeing you at <strong class="text-gradient">CodeBhumi</strong>!</p>
-    <a href="index.html" class="btn btn-primary btn-large hover-lift">Return to Home</a>
+    
+    <h1>Success!</h1>
+    <p>Your application has been received.<br>Our team will review it and get back to you soon. We can't wait to see what you build at <strong class="text-gradient">CodeBhumi</strong>.</p>
+    
+    <div class="action-box">
+      <a href="index.html" class="btn btn-primary btn-large hover-lift action-btn delay-1">
+        <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Return to Home
+      </a>
+    </div>
   </div>
 
   <script src="script.js"></script>
+  
+  <script>
+    // Confetti Engine
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById("confetti-canvas");
+      const ctx = canvas.getContext("2d");
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#3B82F6', '#10B981', '#34D399', '#60A5FA', '#F59E0B'];
+
+      for (let i = 0; i < 150; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2 + 100, // explode from slightly below center
+          r: Math.random() * 6 + 2,
+          dx: Math.random() * 25 - 12.5,
+          dy: Math.random() * -25 - 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          tilt: Math.floor(Math.random() * 10) - 10,
+          tiltAngleIncrement: (Math.random() * 0.07) + 0.05,
+          tiltAngle: 0
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          ctx.beginPath();
+          ctx.lineWidth = p.r;
+          ctx.strokeStyle = p.color;
+          p.tiltAngle += p.tiltAngleIncrement;
+          
+          ctx.moveTo(p.x + p.tilt + p.r, p.y);
+          ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+          ctx.stroke();
+
+          p.x += p.dx;
+          p.y += p.dy;
+          p.dy += 0.5; // gravity
+          p.dx += Math.sin(p.tiltAngle) * 0.1;
+        }
+
+        const activeParticles = particles.filter(p => p.y < canvas.height + 50 && p.x > -50 && p.x < canvas.width + 50);
+        
+        if (activeParticles.length > 0) {
+          requestAnimationFrame(draw);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+
+      // Small delay matching the slide up
+      setTimeout(() => {
+        draw();
+      }, 500);
+
+      window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    });
+  </script>
 </body>
 </html>

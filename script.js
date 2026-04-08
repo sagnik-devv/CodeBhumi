@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 6. Typewriter Effect
-  const phrases = ["Igniting Technology & Innovation", "Building the Future of Tech", "Empowering Student Developers"];
+  const phrases = ["A STUDENT CAREER COMMITTEE INITIATIVE", "Igniting Technology & Innovation", "Building the Future of Tech", "Empowering Student Developers"];
   let phraseIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
