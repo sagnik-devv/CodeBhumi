@@ -11,7 +11,7 @@ Welcome to the **CodeBhumi** frontend repository! This project is the official c
 
 ### 🎭 Interactive Hero Section
 - **Dynamic Typography**: The title features a 3D parallax hover effect that reacts to cursor movement.
-- **Typewriter Effect**: The hero tagline leverages a custom JavaScript typewriter animation that gracefully cycles through the club's core messaging ("Igniting Technology & Innovation", "Building the Future of Tech", etc.).
+- **Typewriter Effect**: The hero tagline leverages a custom JavaScript typewriter animation that gracefully cycles through the club's core messaging.
 - **Particle Network Background**: A custom HTML5 Canvas animation runs in the background, simulating a connected tech grid with floating nodes that interact dynamically.
 
 ### 🚀 Engaging UI & Micro-Animations
@@ -20,13 +20,17 @@ Welcome to the **CodeBhumi** frontend repository! This project is the official c
 - **Scroll Reveal**: Elements smoothly fade and slide into view as the user scrolls down the page, powered by the `IntersectionObserver` API.
 - **Glassmorphic Navigation**: A sticky, blurred navigation bar that adapts to screen scroll and transitions beautifully from transparent to frosted glass.
 
+### ☁️ Serverless Application System
+- **Firebase Integration**: The website transitions away from traditional web forms or custom backends by integrating **Firebase Cloud Firestore** directly into the frontend. Applicant data is securely saved.
+- **Native Application Flow**: Custom styled `/apply.html` and `/success.html` interfaces providing a premium user experience from form submission to confirmation.
+
 ### 📱 Fully Responsive
 - The layout relies on CSS Grid and Flexbox, ensuring perfect rendering on diverse device sizes.
 - Includes a custom mobile hamburger menu that cleanly toggles navigation links.
 
 ## 🛠️ Technology Stack
 
-This project is built using core web technologies to ensure maximum performance without the overhead of heavy frameworks:
+This project is built using core web technologies to ensure maximum performance while using Serverless platforms for database interactions:
 
 - **HTML5**: Semantic markup for clear page structure.
 - **CSS3**: 
@@ -37,13 +41,14 @@ This project is built using core web technologies to ensure maximum performance 
   - DOM manipulation and event handling.
   - Intersection Observer API for scroll animations.
   - HTML5 Canvas API for the interactive background.
+- **Firebase**: Used as a Serverless Database (Firestore) for storing and managing applicant data securely.
 - **Fonts & Typography**: `Inter` for clean body text and `Outfit` for bold, modern headings (via Google Fonts).
 - **Icons**: FontAwesome 6 for scalable vector iconography.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-No special tools or build steps are required. All you need is a modern web browser.
+No special tools or build steps are required. All you need is a modern web browser. It is fully deployable to static hosting platforms like **Netlify**, **Vercel**, or **GitHub Pages** right out of the box!
 
 ### Installation & Usage
 1. Clone the repository:
@@ -62,9 +67,12 @@ No special tools or build steps are required. All you need is a modern web brows
 ```text
 📦 CodeBhumi
  ┣ 📜 index.html    # The main HTML document containing the structure
+ ┣ 📜 apply.html    # Application form page
+ ┣ 📜 success.html  # Application success confirmation page
  ┣ 📜 styles.css    # All styling, theme variables, and keyframe animations
  ┣ 📜 script.js     # JavaScript logic for theme toggling, typing effects, and canvas
- ┣ 🖼️ Org Logo.jpg  # Organization logo asset
+ ┣ 📜 apply.js      # Form handling and Firebase integration logic
+ ┣ 🖼️ Org Logo.jpeg # Organization logo asset
  ┗ 📜 README.md     # Project documentation
 ```
 
