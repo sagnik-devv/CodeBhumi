@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 4. Scroll Reveal Animations
-  const revealElements = document.querySelectorAll('.about-card, .item-card, .event-card, .trait-badge');
+  const revealElements = document.querySelectorAll('.about-card, .item-card, .event-card, .trait-badge, .mentor-card');
   
   const revealOptions = {
     threshold: 0.15,
@@ -328,6 +328,27 @@ document.addEventListener("DOMContentLoaded", () => {
       // Toggle current item
       parentItem.classList.toggle('active');
     });
+  });
+
+  // --- Skeleton Loader Logic ---
+  const lazyImages = document.querySelectorAll('.lazy-img');
+  
+  lazyImages.forEach(img => {
+    if (img.complete) {
+      // If the image is already loaded (from cache, etc.)
+      img.classList.add('loaded');
+      if(img.parentElement.classList.contains('skeleton')) {
+        img.parentElement.classList.remove('skeleton');
+      }
+    } else {
+      // Wait for it to load
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+        if(img.parentElement.classList.contains('skeleton')) {
+          img.parentElement.classList.remove('skeleton');
+        }
+      });
+    }
   });
 
 });
