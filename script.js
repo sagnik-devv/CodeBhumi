@@ -7,23 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if(themeToggleParam) {
     const icon = themeToggleParam.querySelector("i");
     
-    // Check local storage for theme
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      htmlEl.setAttribute("data-theme", savedTheme);
-      icon.className = savedTheme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
-    } else {
-      htmlEl.setAttribute("data-theme", "light");
-      icon.className = "fa-solid fa-moon";
-    }
+    // Always start in light mode
+    htmlEl.setAttribute("data-theme", "light");
+    icon.className = "fa-solid fa-moon";
 
     themeToggleParam.addEventListener("click", () => {
       const currentTheme = htmlEl.getAttribute("data-theme");
       const newTheme = currentTheme === "dark" ? "light" : "dark";
       
       htmlEl.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-      
       icon.className = newTheme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
     });
   }

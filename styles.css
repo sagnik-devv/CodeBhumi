@@ -1134,6 +1134,23 @@ ul {
   }
 }
 
+/* --- Touch Device UI Enhancements --- */
+@media (hover: none) {
+  .mentor-card, .item-card, .team-card, .event-card, .about-card {
+    border-color: rgba(16, 185, 129, 0.4) !important;
+    box-shadow: 0 12px 35px -10px rgba(16, 185, 129, 0.25) !important;
+  }
+  
+  .btn-primary {
+    animation: pulse-border 3s infinite;
+  }
+  
+  .card-icon, .icon-wrap, .event-date {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
+    transform: scale(1.05);
+  }
+}
+
 /* --- Tech Stack Marquee --- */
 .tech-marquee {
   background: transparent;
