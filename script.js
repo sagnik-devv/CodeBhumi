@@ -311,5 +311,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-});
+  // --- FAQ Accordion Logic ---
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const parentItem = question.parentElement;
+      
+      // Close all other active items
+      document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== parentItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current item
+      parentItem.classList.toggle('active');
+    });
+  });
 
+});
