@@ -80,5 +80,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 formError.style.display = 'block';
             }
         });
+
+        // Real-time validation for Phone
+        const phoneInput = document.getElementById('phone');
+        const phoneWrapper = document.getElementById('phone-wrapper');
+        if (phoneInput && phoneWrapper) {
+            phoneInput.addEventListener('input', (e) => {
+                const val = e.target.value.trim();
+                // Simple regex: optional + followed by 10 to 15 digits
+                const isValid = /^\+?[0-9\s-]{10,15}$/.test(val.replace(/[\s-]/g, ''));
+                if (isValid && val.length > 9) {
+                    phoneWrapper.classList.add('is-valid');
+                } else {
+                    phoneWrapper.classList.remove('is-valid');
+                }
+            });
+        }
+
+        // Real-time validation for LinkedIn
+        const linkedinInput = document.getElementById('linkedin');
+        const linkedinWrapper = document.getElementById('linkedin-wrapper');
+        if (linkedinInput && linkedinWrapper) {
+            linkedinInput.addEventListener('input', (e) => {
+                const val = e.target.value.trim();
+                const isValid = /^https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/.test(val);
+                if (isValid) {
+                    linkedinWrapper.classList.add('is-valid');
+                } else {
+                    linkedinWrapper.classList.remove('is-valid');
+                }
+            });
+        }
     }
 });

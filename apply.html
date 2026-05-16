@@ -222,6 +222,26 @@
       color: var(--color-green-light);
     }
 
+    .validation-icon {
+      position: absolute;
+      right: 1.2rem;
+      color: var(--color-green-light);
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+
+    .input-wrapper.is-valid .validation-icon {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    
+    .input-wrapper.is-valid .form-control {
+      border-color: rgba(16, 185, 129, 0.4);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 2px rgba(16, 185, 129, 0.1);
+    }
+
     select.form-control {
       appearance: none;
       cursor: pointer;
@@ -386,9 +406,10 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="phone">Phone Number</label>
-                <div class="input-wrapper">
+                <div class="input-wrapper" id="phone-wrapper">
                   <i class="fa-solid fa-phone input-icon"></i>
                   <input type="tel" id="phone" class="form-control" required placeholder="+91 9876543210">
+                  <i class="fa-solid fa-circle-check validation-icon"></i>
                 </div>
               </div>
               <div class="form-group">
@@ -443,9 +464,10 @@
 
             <div class="form-group">
               <label class="form-label" for="linkedin">LinkedIn Profile Link</label>
-              <div class="input-wrapper">
+              <div class="input-wrapper" id="linkedin-wrapper">
                 <i class="fa-brands fa-linkedin input-icon"></i>
-                <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/username">
+                <input type="url" id="linkedin" class="form-control" required placeholder="https://linkedin.com/in/username">
+                <i class="fa-solid fa-circle-check validation-icon"></i>
               </div>
             </div>
 
